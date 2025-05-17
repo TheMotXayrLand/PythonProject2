@@ -185,4 +185,41 @@ def task_4():
 # === Головне меню ===
 def main():
     while True:
-        print("\n=== М
+        print("\n=== МЕНЮ ===")
+        print("1. Приклади класів")
+        print("2. Обробка виключень")
+        print("3. Завдання 1 – Вікові групи")
+        print("4. Завдання 2 – Перетворення числа")
+        print("5. Завдання 3 – Читання файлу")
+        print("6. Завдання 4 – Імпорт функції")
+        print("0. Вихід")
+
+        choice = input("Ваш вибір: ")
+
+        if choice == "1":
+            hello = Hello_world()
+            hello.printer()
+            hi = Hi()
+            hi.hi_print()
+            Hello_World()
+            nick = Child()
+            iphone = SmartPhone(model="POCO")
+            iphone.print_info()
+        elif choice == "2":
+            exception_demo()
+        elif choice == "3":
+            task_1()
+        elif choice == "4":
+            task_2()
+        elif choice == "5":
+            task_3()
+        elif choice == "6":
+            task_4()
+        elif choice == "0":
+            print("Завершення програми.")
+            break
+        else:
+            print("Невірний вибір. Спробуйте ще раз.")
+
+if __name__ == "__main__":
+    main()
