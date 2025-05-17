@@ -1,6 +1,103 @@
 import random
 
-# --- Класс Pet (Питомец) ---
+# --- Клас Animal ---
+class Animal:
+    def __init__(self, name, species):
+        self.name = name
+        self.species = species
+
+    def make_sound(self):
+        print(f"{self.name} makes a sound.")
+
+class Dog(Animal):
+    def __init__(self, name):
+        super().__init__(name, species="Dog")
+
+    def make_sound(self):
+        print(f"{self.name} says: Woof!")
+
+class Cat(Animal):
+    def __init__(self, name):
+        super().__init__(name, species="Cat")
+
+    def make_sound(self):
+        print(f"{self.name} says: Meow!")
+
+# --- Клас Person ---
+class Person:
+    def __init__(self, name, age):
+        self.name = name
+        self._age = age
+
+    def age(self):
+        return self._age
+
+class Driver(Person):
+    def __init__(self, name, age, license_number):
+        super().__init__(name, age)
+        self.license_number = license_number
+
+# --- Клас Transport ---
+class Transport:
+    def __init__(self, speed):
+        self.speed = speed
+
+    def move(self):
+        print(f"Moving at speed {self.speed} km/h.")
+
+class CarTransport(Transport):
+    def __init__(self):
+        super().__init__(speed=120)
+
+class Bicycle(Transport):
+    def __init__(self):
+        super().__init__(speed=20)
+
+class Train(Transport):
+    def __init__(self):
+        super().__init__(speed=250)
+
+# --- Клас Device ---
+class Device:
+    def turn_on(self):
+        print("Device is turned on.")
+
+    def turn_off(self):
+        print("Device is turned off.")
+
+class Phone(Device):
+    def call(self):
+        print("Calling...")
+
+class Laptop(Device):
+    def code(self):
+        print("Writing code...")
+
+class TV(Device):
+    def watch(self):
+        print("Watching TV...")
+
+# --- Клас ProgrammingLanguage ---
+class ProgrammingLanguage:
+    def __init__(self, name):
+        self.name = name
+
+    def greet(self):
+        print(f"Hello from {self.name}!")
+
+class PythonLang(ProgrammingLanguage):
+    def __init__(self):
+        super().__init__(name="Python")
+
+class JavaLang(ProgrammingLanguage):
+    def __init__(self):
+        super().__init__(name="Java")
+
+class RustLang(ProgrammingLanguage):
+    def __init__(self):
+        super().__init__(name="Rust")
+
+# --- Клас Pet ---
 class Pet:
     def __init__(self, name="Pet"):
         self.name = name
@@ -25,7 +122,7 @@ class Pet:
             print(f"{self.name} has passed away...")
             self.alive = False
 
-# --- Класс Job ---
+# --- Клас Job ---
 job_list = {
     "Java developer": {"salary": 50, "gladness_less": 10},
     "Python developer": {"salary": 40, "gladness_less": 3},
@@ -39,7 +136,7 @@ class Job:
         self.salary = job_list[self.job]["salary"]
         self.gladness_less = job_list[self.job]["gladness_less"]
 
-# --- Класс Auto ---
+# --- Клас Auto ---
 brands_of_car = {
     "BMW": {"fuel": 100, "strength": 100, "consumption": 6},
     "Lada": {"fuel": 50, "strength": 40, "consumption": 10},
@@ -64,13 +161,13 @@ class Auto:
             print("The car cannot move.")
             return False
 
-# --- Класс House ---
+# --- Клас House ---
 class House:
     def __init__(self):
         self.mess = 0
         self.food = 0
 
-# --- Класс Human ---
+# --- Клас Human ---
 class Human:
     def __init__(self, name="Human"):
         self.name = name
@@ -153,11 +250,13 @@ class Human:
             return False
         return True
 
-# --- Класс Student (наследуется от Human) ---
+# --- Клас Student ---
 class Student(Human):
     def __init__(self, name="Student"):
         super().__init__(name)
         self.pet = Pet(name=f"{self.name}'s Pet")
+        self.device = Laptop()
+        self.language = random.choice([PythonLang(), JavaLang(), RustLang()])
 
     def play_with_pet(self):
         if self.pet and self.pet.alive:
@@ -183,7 +282,8 @@ class Student(Human):
         print(f"Food: {self.home.food} | Mess: {self.home.mess}")
         print(f"Car: {self.car.brand} | Fuel: {self.car.fuel} | Strength: {self.car.strength}")
 
-        # Жизнь питомца
+        self.language.greet()
+
         if self.pet:
             self.pet.day_passes()
             if not self.pet.alive:
@@ -230,7 +330,7 @@ class Student(Human):
             self.shopping("delicacies")
         return True
 
-# --- Симуляция жизни студента ---
+# --- Симуляція ---
 nick = Student(name="Nick")
 for day in range(1, 366):
     if not nick.live(day):
